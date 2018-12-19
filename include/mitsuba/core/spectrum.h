@@ -35,11 +35,11 @@
 MTS_NAMESPACE_BEGIN
 
 /**
- * \brief Abstract continous spectral power distribution data type,
+ * \brief Abstract continuous spectral power distribution data type,
  * which supports evaluation at arbitrary wavelengths.
  *
- * Here, the term 'continous' doesn't necessarily mean that the
- * underlying spectrum is continous, but rather emphasizes the fact
+ * Here, the term 'continuous' doesn't necessarily mean that the
+ * underlying spectrum is continuous, but rather emphasizes the fact
  * that it is a function over the reals (as opposed to the discrete
  * spectrum, which only stores samples for a discrete set of wavelengths).
  *

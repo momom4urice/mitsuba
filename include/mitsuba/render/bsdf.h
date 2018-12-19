@@ -29,7 +29,7 @@
 MTS_NAMESPACE_BEGIN
 
 /**
- * \brief This data structured contains all information
+ * \brief This data structure contains all information
  * that is required to sample or query a BSDF.
  *
  * \sa BSDF::f()
