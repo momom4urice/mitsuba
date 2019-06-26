@@ -8,11 +8,13 @@ doc/*.bbl
 doc/*.blg
 doc/main.pdf
 doc/plugins_generated.tex
+doc/html/*
 
 # Build-related
 .sconf_temp
 build/release
 build/debug
+build/cmake-*/
 debian
 .sconsign.dblite
 config.py
@@ -26,6 +28,9 @@ build/mitsuba-msvc2017.vcxproj.user
 build/.vs/**/*
 data/windows/mitsuba_res.res
 dist
+
+# JetBrains
+.idea/
 
 # Debugging history files
 \.gdb_history
