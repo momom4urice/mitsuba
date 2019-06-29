@@ -6,6 +6,8 @@ doc/*.out
 doc/*.toc
 doc/*.bbl
 doc/*.blg
+doc/*.run.xml
+doc/main-blx.bib
 doc/main.pdf
 doc/plugins_generated.tex
 doc/html/*
