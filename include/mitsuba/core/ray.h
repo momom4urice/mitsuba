@@ -46,7 +46,7 @@ template <typename _PointType, typename _VectorType> struct TRay {
     VectorType d;    ///< Ray direction
     Scalar maxt;     ///< Maximum range for intersection tests
     VectorType dRcp; ///< Componentwise reciprocals of the ray direction
-    Float time;  ///< Time value associated with this ray
+    Float time;      ///< Time value associated with this ray
 
     /// Construct a new ray
     inline TRay() : mint(Epsilon),

@@ -159,7 +159,7 @@ public:
 
         /**
          * The goal of the medium sampling weight is to be able to
-         * sample medium intarctions according to
+         * sample medium interactions according to
          *    sigma_s(t) * tau(0 <-> t)
          * as opposed to
          *    sigma_t(t) * tau(0 <-> t)

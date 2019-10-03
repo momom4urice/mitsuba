@@ -239,7 +239,7 @@ add_executable(plugin_bsdf_diffuse
     src/bsdfs/diffuse.cpp)
 target_link_libraries(plugin_bsdf_diffuse PRIVATE librender)
 
-add_executable(plugin_film
+add_executable(plugin_films
     src/films/annotations.h
     src/films/banner.h
     src/films/cnpy.cpp
@@ -248,7 +248,7 @@ add_executable(plugin_film
     src/films/ldrfilm.cpp
     src/films/mfilm.cpp
     src/films/tiledhdrfilm.cpp)
-target_link_libraries(plugin_film PRIVATE librender Boost::filesystem)
+target_link_libraries(plugin_films PRIVATE librender Boost::filesystem)
 
 add_executable(plugin_integrator_direct
     src/integrators/direct/ao.cpp
@@ -260,3 +260,28 @@ add_executable(plugin_integrator_path
     src/integrators/path/volpath.cpp
     src/integrators/path/volpath_simple.cpp)
 target_link_libraries(plugin_integrator_path PRIVATE librender Boost::filesystem)
+
+add_executable(plugin_integrator_ptracer
+    src/integrators/ptracer/ptracer.cpp
+    src/integrators/ptracer/ptracer_proc.cpp
+    src/integrators/ptracer/ptracer_proc.h)
+target_link_libraries(plugin_integrator_ptracer PRIVATE librender Boost::filesystem)
+
+
+add_executable(plugin_media
+    src/medium/homogeneous.cpp)
+target_link_libraries(plugin_media PRIVATE librender Boost::filesystem)
+
+add_executable(plugin_samplers
+    src/samplers/halton.cpp
+    src/samplers/stratified.cpp)
+target_link_libraries(plugin_samplers PRIVATE librender)
+
+add_executable(plugin_shapes
+    src/shapes/cube.cpp
+    src/shapes/sphere.cpp)
+target_link_libraries(plugin_shapes PRIVATE librender)
+
+add_executable(plugin_subsurface
+    src/subsurface/dipole.cpp)
+target_link_libraries(plugin_subsurface PRIVATE librender)

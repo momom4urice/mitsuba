@@ -56,7 +56,7 @@ public:
      * \param sampler
      *      A source of (pseudo-) random numbers. Note that this sampler
      *      is only used when the scattering model for some reason needs
-     *      more than the two unformly distributed numbers supplied in
+     *      more than the two uniformly distributed numbers supplied in
      *      the \ref BSDF::sample() methods
      *
      * \param mode
