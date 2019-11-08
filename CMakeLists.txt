@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 find_package(Boost REQUIRED COMPONENTS filesystem)
 find_package(XercesC)
+find_package(Eigen3)
 
 # Configuration
 option(MTS_FLOAT_AS_DOUBLE "Use 64-bit floats" OFF)
@@ -145,7 +146,7 @@ set(CORE_SRC
 
 add_library(libcore ${CORE_SRC} ${CORE_H})
 target_include_directories(libcore PRIVATE include)
-target_link_libraries(libcore PRIVATE Boost::filesystem)
+target_link_libraries(libcore PRIVATE Boost::filesystem Eigen3::Eigen)
 
 set(RENDER_H
     include/mitsuba/render/fwd.h
@@ -275,7 +276,8 @@ add_executable(plugin_integrator_ptracer
 target_link_libraries(plugin_integrator_ptracer PRIVATE librender Boost::filesystem)
 
 add_executable(plugin_media
-    src/medium/homogeneous.cpp)
+    src/medium/homogeneous.cpp
+    src/medium/heterogeneous.cpp)
 target_link_libraries(plugin_media PRIVATE librender Boost::filesystem)
 
 add_executable(plugin_samplers
@@ -300,4 +302,9 @@ target_link_libraries(plugin_subsurface PRIVATE librender)
 
 add_executable(mitsuba
     src/mitsuba/mitsuba.cpp)
-target_link_libraries(mitsuba PRIVATE libcore librender Boost::headers XercesC::XercesC)
+target_link_libraries(mitsuba PRIVATE
+    libcore
+    librender
+    Boost::headers
+    XercesC::XercesC
+    Eigen3::Eigen)
