@@ -4,6 +4,7 @@ project(mitsuba)
 set(CMAKE_CXX_STANDARD 11)
 
 find_package(Boost REQUIRED COMPONENTS filesystem)
+find_package(XercesC)
 
 # Configuration
 option(MTS_FLOAT_AS_DOUBLE "Use 64-bit floats" OFF)
@@ -235,9 +236,15 @@ target_link_libraries(librender
     PUBLIC libcore
     PRIVATE Boost::filesystem)
 
-add_executable(plugin_bsdf_diffuse
-    src/bsdfs/diffuse.cpp)
-target_link_libraries(plugin_bsdf_diffuse PRIVATE librender)
+add_executable(plugin_bsdfs
+    src/bsdfs/diffuse.cpp
+    src/bsdfs/hk.cpp)
+target_link_libraries(plugin_bsdfs PRIVATE librender)
+
+add_executable(plugin_emitters
+    src/emitters/area.cpp
+    src/emitters/envmap.cpp)
+target_link_libraries(plugin_emitters PRIVATE librender Boost::filesystem)
 
 add_executable(plugin_films
     src/films/annotations.h
@@ -267,15 +274,20 @@ add_executable(plugin_integrator_ptracer
     src/integrators/ptracer/ptracer_proc.h)
 target_link_libraries(plugin_integrator_ptracer PRIVATE librender Boost::filesystem)
 
-
 add_executable(plugin_media
     src/medium/homogeneous.cpp)
 target_link_libraries(plugin_media PRIVATE librender Boost::filesystem)
 
 add_executable(plugin_samplers
+    src/samplers/independent.cpp
     src/samplers/halton.cpp
     src/samplers/stratified.cpp)
 target_link_libraries(plugin_samplers PRIVATE librender)
+
+add_executable(plugin_sensors
+    src/sensors/irradiancemeter.cpp
+    src/sensors/perspective.cpp)
+target_link_libraries(plugin_sensors PRIVATE librender Boost::filesystem)
 
 add_executable(plugin_shapes
     src/shapes/cube.cpp
@@ -285,3 +297,7 @@ target_link_libraries(plugin_shapes PRIVATE librender)
 add_executable(plugin_subsurface
     src/subsurface/dipole.cpp)
 target_link_libraries(plugin_subsurface PRIVATE librender)
+
+add_executable(mitsuba
+    src/mitsuba/mitsuba.cpp)
+target_link_libraries(mitsuba PRIVATE libcore librender Boost::headers XercesC::XercesC)
